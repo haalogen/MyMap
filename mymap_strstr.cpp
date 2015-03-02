@@ -3,7 +3,7 @@
 #include <locale>
 #include <algorithm>
 using namespace std;
-
+//
 class MyMap {
 private:
     string *key; // начало массива ключей
