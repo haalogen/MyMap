@@ -64,8 +64,8 @@ public:
                     key[i-1] = key[i];
                     val[i-1] = val[i];
                 }
-                key[first_empty-1] = "";
-                val[first_empty-1] = "";
+                key[first_empty-1] = Tkey();
+                val[first_empty-1] = Tval();
                 first_empty--;
 
                 cout << "\"" << k << "\"" << " entry was REMOVED \n";
@@ -118,9 +118,15 @@ public:
 int main()
 {
     try {
-        MyMap<char*, double> constants;
+        MyMap<string, double> constants(3);
         constants.insert("pi", 3.1415926);
         constants.insert("e", 2.7818281828);
+        constants.insert("e", 2.7818281828);    //explicit error generation
+        constants.insert("g", 9.81);
+        constants.remove("pi");
+        constants.print();
+        constants.resize(10);
+        constants.print();
     }
     catch (exception& e) {
         cout << "Exception: " << e.what() << endl;
