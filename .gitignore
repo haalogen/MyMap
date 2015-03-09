@@ -3,4 +3,7 @@
 
 # Ignore objects and archives.
 *.[oa]
+#ignore temp files
+*~
+
 
