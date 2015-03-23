@@ -46,7 +46,8 @@ public:
             if (key[i] == k) return i;
         return -1;
     }
-/*    void insert(const Tkey k, const Tval v) {
+    
+    void insert(const Tkey k, const Tval v) {
         if (first_empty >= 0 && first_empty < size) {
             int res = this->find_ind(k);
             if (res == -1) {        // Если такой ключ k свободен
@@ -59,7 +60,8 @@ public:
             " already exists \n";
         }
         else cerr << "[!] Insertion failed. Map is full \n";
-    }*/
+    }
+    
     void insert(const pair<Tkey, Tval> q) {
         if (first_empty >= 0 && first_empty < size) {
             int res = this->find_ind(q.first);
@@ -129,10 +131,15 @@ public:
             cout << "Entry with key " << k << " doesn't exist! \n";
             
             pair<Tkey,Tval> p = make_pair(k, Tval());
-            insert(p);
+
+            if (first_empty < size) insert(p);
+            else {
+                resize(size + 10);
+                insert(p);
+            }
             
             i = find_ind(k);
-            return val[i];  // exception checkout is needed
+            return val[i];  // exception checkout is NOT needed ANYMORE
         }
         else return val[i];
     }
@@ -171,12 +178,9 @@ int main()
         nums[1];
         nums.print();
         
-        MyMap<int, double> chart(3);
+        MyMap<int, double> chart(1);
         pair<int, double> r(1, 2.34);
         chart.insert(r);
-        chart.print();
-        chart.remove(1);
-        chart.print();
         chart[123];
         chart.print();
     }
