@@ -18,7 +18,7 @@ private:
     int first_empty; // индекс ближайшей неинициализированной пары
 public:
     MyMap(int sz = 32) {
-        size = sz; 
+        size = sz;
         key = new Tkey [size];
         val = new Tval [size];
         first_empty = 0;
@@ -39,7 +39,7 @@ public:
     } 
     ~MyMap(){ delete [] key; delete [] val; cout << "Destructor\n";}
     int get_size() { return size;}
-    int get_first_empty() { return first_empty;}    
+    int get_first_empty() { return first_empty;}
 
     int find_ind(const Tkey k) {
         for(int i=0; i<first_empty; ++i)
